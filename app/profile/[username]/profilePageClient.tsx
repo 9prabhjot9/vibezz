@@ -31,7 +31,13 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-type User = Awaited<ReturnType<typeof getProfileByUsername>>;
+type User = Awaited<ReturnType<typeof getProfileByUsername>> & {
+  _count: {
+    followers: number;
+    following: number;
+    post: number;
+  };
+};
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
 
 interface ProfilePageClientProps {
