@@ -31,6 +31,8 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+
+
 type User = Awaited<ReturnType<typeof getProfileByUsername>> & {
   _count: {
     followers: number;
@@ -38,6 +40,8 @@ type User = Awaited<ReturnType<typeof getProfileByUsername>> & {
     post: number;
   };
 };
+
+
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
 
 interface ProfilePageClientProps {
@@ -93,6 +97,7 @@ function ProfilePageClient({
     }
   };
 
+    
   const isOwnProfile =
     currentUser?.username === user.username ||
     currentUser?.emailAddresses[0].emailAddress.split("@")[0] === user.username;
