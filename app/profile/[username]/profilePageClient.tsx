@@ -33,13 +33,7 @@ import toast from "react-hot-toast";
 
 
 
-type User = Awaited<ReturnType<typeof getProfileByUsername>> & {
-  _count: {
-    followers: number;
-    following: number;
-    post: number;
-  };
-};
+type User = Awaited<ReturnType<typeof getProfileByUsername>>;
 
 
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
@@ -112,7 +106,7 @@ function ProfilePageClient({
             <CardContent className="pt-6">
               <div className="flex flex-col items-center text-center">
                 <Avatar className="w-24 h-24">
-                  <AvatarImage src={user.image ?? "/avatar.png"} />
+                  <AvatarImage src={user.image ?? "/avatar.png"} width={96} height={96} />
                 </Avatar>
                 <h1 className="mt-4 text-2xl font-bold">{user.name ?? user.username}</h1>
                 <p className="text-muted-foreground">@{user.username}</p>
@@ -122,17 +116,17 @@ function ProfilePageClient({
                 <div className="w-full mt-6">
                   <div className="flex justify-between mb-4">
                     <div>
-                      <div className="font-semibold">{user._count.following.toLocaleString()}</div>
+                      <div className="font-semibold">{user._count?.following?.toLocaleString() || 0}</div>
                       <div className="text-sm text-muted-foreground">Following</div>
                     </div>
                     <Separator orientation="vertical" />
                     <div>
-                      <div className="font-semibold">{user._count.followers.toLocaleString()}</div>
+                      <div className="font-semibold">{user._count?.followers?.toLocaleString() || 0}</div>
                       <div className="text-sm text-muted-foreground">Followers</div>
                     </div>
                     <Separator orientation="vertical" />
                     <div>
-                      <div className="font-semibold">{user._count.post.toLocaleString()}</div>
+                      <div className="font-semibold">{user._count?.post?.toLocaleString() || 0}</div>
                       <div className="text-sm text-muted-foreground">Posts</div>
                     </div>
                   </div>
